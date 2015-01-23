@@ -23,7 +23,7 @@ This is a ZeroClipboard extension for the Yii Framework.
 	...
 }
 ```
-and update 
+and run update from your composer
 
 # Usage
 	Yii::import('vendor.bscheshir.zero-clipboard.EZClipboard', true);
@@ -107,7 +107,7 @@ Would produce the following code:
 
 **closeTag** - whether or not to use a closing tag  
 
-	"tagContent" => false
+	"closeTag" => false
 
 **tagId** - shortcut for the tag ID, could also use tagHtmlOptions   
 
@@ -116,6 +116,8 @@ Would produce the following code:
 **zcOptions** - ZeroClipboard options 
 	
 	"zcOptions" => array('moviePath'=>'....')  
+	
+	see more http://xozblog.ru/2014/03/jquery-copy-clipboard/ 
 
 **zcEvents** - ZeroClipboard events in an array 
 	
