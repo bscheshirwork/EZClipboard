@@ -1,0 +1,20 @@
+{
+    "name": "bscheshir/zero-clipboard",
+    "description": "This is a ZeroClipboard extension for the Yii Framework.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BSCheshir",
+            "email": "bscheshir@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "http://github.com/bscheshirwork/zero-clipboard"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    }
+}
