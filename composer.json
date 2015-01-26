@@ -2,6 +2,18 @@
     "name": "bscheshir/zero-clipboard",
     "description": "This is a ZeroClipboard extension for the Yii Framework.",
     "license": "MIT",
+    "keywords": [
+        "flash",
+        "clipboard",
+        "copy",
+        "cut",
+        "paste",
+        "zclip",
+        "clip",
+        "clippy",
+        "yii",
+        "GridView"
+    ],
     "authors": [
         {
             "name": "BSCheshir",
