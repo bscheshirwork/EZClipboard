@@ -61,6 +61,7 @@ class EZClipboard extends CWidget
         foreach ($this->jsFiles as $file) {
             $clientScript->registerScriptFile($this->assetPath . '/js/' . $file, $this->getScriptPos($this->scriptPos));
         }
+        Yii::app()->clientScript->registerScript('_', 'EZClipboardMoviePath="'.$this->assetPath . '/swf/' . $this->swfFile.'";', CClientScript::POS_READY);
     }
 
     /**
@@ -73,18 +74,25 @@ class EZClipboard extends CWidget
     }
 
     /**
-     * Run the widget
+     * Return js string to publish
+     * @return string
      */
-    public function run()
-    {
+    public function script(){
         $this->zcOptions['moviePath'] = $this->assetPath . '/swf/' . $this->swfFile;
         $script = "var clip{$this->tagId} = new ZeroClipboard($('#{$this->tagId}'), " . json_encode($this->zcOptions) . ");";
         if (@$this->zcEvents) {
             foreach ($this->zcEvents as $event => $function)
                 $script .= "clip{$this->tagId}.on('$event', '$function');";
         }
+        return $script;
+    }
 
-        Yii::app()->clientScript->registerScript($this->id, $script, CClientScript::POS_READY);
+    /**
+     * Run the widget
+     */
+    public function run()
+    {
+        Yii::app()->clientScript->registerScript($this->id, $this->script(), CClientScript::POS_READY);
 
         $this->tagHtmlOptions['id'] = $this->tagId;
         $this->tagHtmlOptions['data-clipboard-text'] = $this->clipboardText;
