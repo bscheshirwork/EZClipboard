@@ -89,6 +89,39 @@ Would produce the following code:
 		</body>
 	</html>
 
+## Usage in GridView with Ajax
+```
+Yii::import('vendor.bscheshir.zero-clipboard.EZClipboard', true);
+
+$this->widget('CGridView', [
+...
+    'afterAjaxUpdate'                     => 'function(id, data) {
+        $(".clipboard").each(function(index){
+            new ZeroClipboard($(this), {"moviePath":EZClipboardMoviePath});
+        });
+    }',
+...
+    'columns'                             => [
+...
+        [
+            'name'              => '',
+            'type'              => 'raw',
+            'value'             => function ($data, $row) {
+                $this->widget('EZClipboard', [
+                    'scriptPos'      => 'head',
+                    'tag'            => 'i',
+                    'tagHtmlOptions' => ['class' => 'clipboard icon-gift btn btn-mini btn-info'],
+                    'tagContent'     => '',
+                    'tagId'          => 'copy_button_' . $row,
+                    'clipboardText'  => $data->getComment()
+                ]);
+            },
+        ],
+...
+    ],
+]);
+```
+
 ## Options
   
 **tag** - the type of tag to use (Default: 'button')  
